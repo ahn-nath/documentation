@@ -36,7 +36,7 @@ keywords:
   - enterprise auth
   - group sync
   - upstream params
-updated: 2026-01-12
+updated: 2026-06-03
 ---
 
 Kinde supports the use of Microsoft Entra ID as an authentication method. We support WS Federated and OAuth2.0 (follow the topic below), and [Microsoft Entra ID SAML](/authenticate/enterprise-connections/entra-id-saml/) which is covered in a separate topic.
@@ -136,8 +136,16 @@ You can make a connection available only to a specific organization, or you can 
 1. Open your application in the [Portal](https://entra.microsoft.com/#home).
 2. Select the **Redirect URIs** links on the right.
 3. Select **Add URI**.
-4. In the relevant field, enter your callback URL (from the 'Configure the connection' procedure above)
-5. Select **Save**.
+4. In the relevant field, enter your callback URL (from the 'Configure the connection' procedure above).
+5. Select **Web** as the platform type for the redirect URI—not **SPA**.
+
+   <Aside>
+
+   Even if your own app is a single-page app, use **Web** for this redirect URI. The platform type describes who receives Microsoft's redirect—in this setup, that is Kinde's server, not your browser app. SPA platform settings use different OAuth rules and will cause login failures.
+
+   </Aside>
+
+6. Select **Save**.
 
 ## Step 4: Enable the connection in Kinde
 
